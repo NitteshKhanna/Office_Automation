@@ -36,11 +36,15 @@ def register():
     con.close()
     return redirect("http://localhost:4200/register",code=302)
 
-@app.route("/user_name",methods=['POST'])
+@app.route("/user_name",methods=['GET'])
 def user_name():
-    con=sqlite3()
-    ip=request.json["user_name"]
-    return ip
+    con=sqlite3.connect("db.db")
+    cur=con.cursor()
+    cur.execute("SELECT user_name from accounts")
+    op=cur.fetchall()
+    con.close()
+    # ip=request.json["user_name"]
+    return op
 
 
 @app.after_request

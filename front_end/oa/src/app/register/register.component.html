@@ -21,9 +21,8 @@
 			<input type="tel" placeholder="Enter Phone Number" name="ph" required>
 
 			<label for="uname"><b>Username</b></label>
-			<input id="hh" type="text" placeholder="Enter Username" name="user_name"  (input)=" go();user_name=true" required>
-            <p  *ngIf="user_name">Thank you {{b}}</p>
-
+			<input id="hh" type="text" placeholder="Enter Username" name="user_name" [(ngModel)]="b" (input)=" go();user_name=true" required>
+            <p id="availability"> {{C}}</p>
 			<label for="psw"><b>Password</b></label>
 			<input type="password" placeholder="Enter Password" name="password" required>
 
