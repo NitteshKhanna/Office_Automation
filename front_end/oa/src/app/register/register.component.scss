@@ -1,0 +1,62 @@
+#body {
+    background-color: #f1f1f1;
+    margin-top: -3rem;
+}
+@import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap');
+form {
+    // padding-top: 3rem;
+    font-family: 'Konkhmer Sleokchher', cursive;
+
+    background: linear-gradient(to right bottom, rgb(255, 210, 210), rgb(197, 246, 255));
+    border: 1px solid #cccccc;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+input[type=text], input[type=email], input[type=password],input[type=date],input[type=tel] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 100%;
+    }
+}

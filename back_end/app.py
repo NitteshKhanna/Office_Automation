@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,redirect
 import sqlite3
 
 
@@ -6,7 +6,7 @@ app=Flask(__name__)
 
 
 con=sqlite3.connect("db.db")
-con.execute("CREATE TABLE IF NOT EXISTS accounts (ID INTEGER PRIMARY KEY AUTOINCREMENT , user_name VARCHAR(20),password VARCHAR(20),fname VARCHAR(20),lname VARCHAR(20), dob VARCHAR(12),email VARCHAR(30),ph INT)")
+con.execute("CREATE TABLE IF NOT EXISTS accounts (ID INTEGER PRIMARY KEY AUTOINCREMENT , user_name VARCHAR(20),password VARCHAR(20),fname VARCHAR(20),lname VARCHAR(20), dob VARCHAR(12),email VARCHAR(30),ph INTEGER)")
 con.commit()
 con.close()
 
@@ -31,13 +31,24 @@ def register():
     # cur.execute("SELECT * FROM accounts")
     query=f"INSERT INTO accounts (user_name,password,fname,lname,dob,email,ph) VALUES ('{user_name}','{password}','{fname}','{lname}',{dob},'{email}',{ph})"
     # cur.execute(query)
-    cur.execute(f"INSERT INTO accounts (user_name,password,fname,lname,dob,email,ph) VALUES ('{user_name}','{password}','{fname}','{lname}',2020-03-01,'{email}',{int(ph)})")
+    cur.execute(f"INSERT INTO accounts (user_name,password,fname,lname,dob,email,ph) VALUES ('{user_name}','{password}','{fname}','{lname}','{dob}','{email}','{ph}')")
     con.commit()
+    con.close()
+    return redirect("http://localhost:4200/register",code=302)
 
-    return "Inserted Successfully!"
+@app.route("/user_name",methods=['POST'])
+def user_name():
+    con=sqlite3()
+    ip=request.json["user_name"]
+    return ip
 
 
-
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 if(__name__=="__main__"):
     app.run(debug=True)
