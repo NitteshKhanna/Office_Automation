@@ -1,13 +1,12 @@
 #body {
     background-color: #f1f1f1;
     margin-top: -3rem;
+    // height: 100rem;
 }
 @import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap');
-*{
-    // position: fixed;
-}
+
 form {
-    // padding-top: 3rem;
+//     // padding-top: 3rem;
     font-family: 'Konkhmer Sleokchher', cursive;
 
     background: linear-gradient(to right bottom, rgb(255, 210, 210), rgb(197, 246, 255));
@@ -35,7 +34,7 @@ input[type=text], input[type=email], input[type=password],input[type=date],input
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #b8ceb9;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -63,7 +62,6 @@ span.psw {
         max-width: 100%;
     }
 }
-
 
 #availability{
     position: relative;

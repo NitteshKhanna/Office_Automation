@@ -1,4 +1,4 @@
-<div id="body">
+<div id="body"> -->
     <br><br>
     <form action="http://localhost:5000/register" method="post">
         <h2>Registration Form</h2>
@@ -6,27 +6,30 @@
 		<div class="container">
             
             <label for="fname"><b>First Name</b></label>
-			<input type="text" placeholder="Enter First Name" name="fname" required>
+			<input id="i1" type="text" placeholder="Enter First Name" (change)="test(0)" name="fname" required>
             
 			<label for="lname"><b>Last Name</b></label>
-			<input type="text" placeholder="Enter Last Name" name="lname" required>
+			<input id="i2" type="text" placeholder="Enter Last Name" (change)="test(1)" name="lname" required>
             
             <label for="dob"><b>Date of Birth</b></label>
-			<input type="date" placeholder="Enter Date of Birth" name="dob" required>
+			<input id="i3" type="date" placeholder="Enter Date of Birth" (change)="test(2)" name="dob" required>
             
 			<label for="email"><b>Email</b></label>
-			<input type="email" placeholder="Enter Email" name="email" required>
+			<input id="i4" type="email" placeholder="Enter Email" (change)="test(3)" name="email" required>
 
 			<label for="phone"><b>Phone Number</b></label>
-			<input type="tel" placeholder="Enter Phone Number" name="ph" required>
+			<input id="i5" type="tel" placeholder="Enter Phone Number" (change)="test(4)" name="ph" required>
 
 			<label for="uname"><b>Username</b></label>
-			<input id="hh" type="text" placeholder="Enter Username" name="user_name" [(ngModel)]="b" (input)=" go();user_name=true" required>
-            <p id="availability"> {{C}}</p>
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" name="password" required>
+			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="test(5)" (keyup)="username()" required>
+            <p id="usernamecheck">{{usernamecheck}}</p>
 
-			<button type="submit">Register</button>
+			<label for="psw"><b>Password</b></label>
+			<input id="i7" type="password" placeholder="Enter Password" name="password" (input)="test(6)" required>
+
+			<button id="submit" type="submit">Register</button>
         </div>
     </form>
+
+	
 </div>
