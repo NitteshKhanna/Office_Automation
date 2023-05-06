@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,33 +13,18 @@ export class RegisterComponent {
   details=false
   ngOnInit()
   {
-    axios.get("http://localhost:5000/user_name").then(res => {
-      console.log(res.data)
-      this.arr=res.data
-    })
+    
   }
   username()
   {
     var entered=(<HTMLInputElement>document.getElementById("i6")).value
-    for (var i=0; i<this.arr.length;i++)
-    {
-      if(entered.length>0)
-      {
-        if(entered==this.arr[i][0])
-        {
-          console.log("true");
-          this.usernamecheck="Taken";
-          document.getElementById("usernamecheck").style.color="red";
-          break;
-        }
-        else
-        {
-          console.log("false");
-          this.usernamecheck="Available";
-          document.getElementById("usernamecheck").style.color="green";
-        }
-      }
-    }
+    axios.post("http://localhost:5000/user_name",{"username":entered}).then(res =>{
+      var status=res.status
+      if (status==404)
+      console.log("Available")
+      if (status==200)
+      console.log("Taken")
+    })
   }
     test(n:number)
     {

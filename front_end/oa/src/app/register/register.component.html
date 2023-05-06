@@ -21,9 +21,9 @@
 			<input id="i5" type="tel" placeholder="Enter Phone Number" (change)="test(4)" name="ph" required>
 
 			<label for="uname"><b>Username</b></label>
-			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="test(5)" (keyup)="username()" required>
+			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="test(5);username()" required>
             <p id="usernamecheck">{{usernamecheck}}</p>
-
+			
 			<label for="psw"><b>Password</b></label>
 			<input id="i7" type="password" placeholder="Enter Password" name="password" (input)="test(6)" required>
 

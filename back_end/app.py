@@ -1,4 +1,4 @@
-from flask import Flask,request,redirect
+from flask import Flask,request,redirect,make_response
 import sqlite3
 
 
@@ -36,15 +36,23 @@ def register():
     con.close()
     return redirect("http://localhost:4200/register",code=302)
 
-@app.route("/user_name",methods=['GET'])
+@app.route("/user_name",methods=['POST'])
 def user_name():
+    username=request.json["username"]
     con=sqlite3.connect("db.db")
     cur=con.cursor()
     cur.execute("SELECT user_name from accounts")
     op=cur.fetchall()
+    cur.execute('SELECT COUNT(*) FROM accounts;')
+    count=cur.fetchall()[0][0]
     con.close()
-    # ip=request.json["user_name"]
-    return op
+    for i in range (count):
+        # print(op[i][0],op[i][0]==username,username)
+        if op[i][0]==username:
+            response=make_response("True",200)
+            return response
+    response=make_response("False",400)
+    return response
 
 @app.route("/test",methods=['POST'])
 def test():
