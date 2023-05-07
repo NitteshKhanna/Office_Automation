@@ -69,3 +69,21 @@ span.psw {
     margin-top: -.5rem;
     font-size: .9rem;
 }
+$color: #c9e6e4;
+@function color($setcolor)
+{
+    $color:$setcolor;
+}
+
+
+.strengthbar{
+    // height: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: .2rem;
+div{
+    background-color: $color;
+    height: .3rem;
+    border-radius: 1rem;
+}
+}

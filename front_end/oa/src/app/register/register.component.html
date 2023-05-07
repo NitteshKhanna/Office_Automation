@@ -24,9 +24,14 @@
 			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="test(5);username()" required>
             <p id="usernamecheck">{{usernamecheck}}</p>
 			
-			<label for="psw"><b>Password</b></label>
-			<input id="i7" type="password" placeholder="Enter Password" name="password" (input)="test(6)" required>
-
+			<label for="psw"><b>Password</b></label> 	
+			<input id="i7" type="password" placeholder="Enter Password" name="password" (keyup)="test(6);password()" required>
+			<div class="strengthbar">
+					<div class="strength"></div>
+					<div class="strength"></div>
+					<div class="strength"></div>
+			</div>
+			<p>{{strength}}</p>
 			<button id="submit" type="submit">Register</button>
         </div>
     </form>

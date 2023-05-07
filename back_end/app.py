@@ -49,9 +49,9 @@ def user_name():
     for i in range (count):
         # print(op[i][0],op[i][0]==username,username)
         if op[i][0]==username:
-            response=make_response("True",200)
+            response=make_response("Caught you",200)
             return response
-    response=make_response("False",400)
+    response=make_response("",202)
     return response
 
 @app.route("/test",methods=['POST'])
