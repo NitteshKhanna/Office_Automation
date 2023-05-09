@@ -1,38 +1,39 @@
-<div id="body"> -->
+<div id="body"> 
     <br><br>
-    <form action="http://localhost:5000/register" method="post">
+    <form id="form" action="http://localhost:5000/register" method="post">
         <h2>Registration Form</h2>
 
 		<div class="container">
             
             <label for="fname"><b>First Name</b></label>
-			<input id="i1" type="text" placeholder="Enter First Name" (change)="test(0)" name="fname" required>
+			<input id="i1" type="text" placeholder="Enter First Name" (change)="check(0)" name="fname" required>
             
 			<label for="lname"><b>Last Name</b></label>
-			<input id="i2" type="text" placeholder="Enter Last Name" (change)="test(1)" name="lname" required>
+			<input id="i2" type="text" placeholder="Enter Last Name" (change)="check(1)" name="lname" required>
             
             <label for="dob"><b>Date of Birth</b></label>
-			<input id="i3" type="date" placeholder="Enter Date of Birth" (change)="test(2)" name="dob" required>
+			<input id="i3" type="date" placeholder="Enter Date of Birth" (change)="check(2)" name="dob" required>
             
 			<label for="email"><b>Email</b></label>
-			<input id="i4" type="email" placeholder="Enter Email" (change)="test(3)" name="email" required>
+			<input id="i4" type="email" placeholder="Enter Email" (change)="check(3)" name="email" required>
 
 			<label for="phone"><b>Phone Number</b></label>
-			<input id="i5" type="tel" placeholder="Enter Phone Number" (change)="test(4)" name="ph" required>
+			<input id="i5" type="tel" placeholder="Enter Phone Number" (change)="check(4)" name="ph" required>
 
 			<label for="uname"><b>Username</b></label>
-			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="test(5);username()" required>
+			<input id="i6" type="text" placeholder="Enter Username" name="user_name" (change)="check(5);username()" required>
             <p id="usernamecheck">{{usernamecheck}}</p>
 			
 			<label for="psw"><b>Password</b></label> 	
-			<input id="i7" type="password" placeholder="Enter Password" name="password" (keyup)="test(6);password()" required>
+			<input id="i7" type="password" placeholder="Enter Password" name="password" (keyup)="check(6);password()" required>
 			<div class="strengthbar">
-					<div class="strength"></div>
-					<div class="strength"></div>
-					<div class="strength"></div>
+					<div id="st1" class="strength"></div>
+					<div id="st2" class="strength"></div>
+					<div id="st3" class="strength"></div>
 			</div>
 			<p>{{strength}}</p>
 			<button id="submit" type="submit">Register</button>
+			<a href="/login">Already have an account?</a>
         </div>
     </form>
 

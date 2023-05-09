@@ -13,11 +13,8 @@ con.close()
 @app.route("/register", methods=['POST'])
 def register():
     
-    print("\n\n\n yy",request.form.get('fname'),"\n\n\n")
-
     #Recieving the new member details from front-end    
     user_name=request.form.get('user_name')
-    print(user_name)
     password=request.form.get('password')
     fname=request.form.get('fname')
     lname=request.form.get('lname')
@@ -25,20 +22,20 @@ def register():
     email=request.form.get('email')
     ph=request.form.get('ph')
     
-    #intializing sqlite3 server
     con=sqlite3.connect("db.db")
     cur=con.cursor()
-    # cur.execute("SELECT * FROM accounts")
-    query=f"INSERT INTO accounts (user_name,password,fname,lname,dob,email,ph) VALUES ('{user_name}','{password}','{fname}','{lname}',{dob},'{email}',{ph})"
-    # cur.execute(query)
     cur.execute(f"INSERT INTO accounts (user_name,password,fname,lname,dob,email,ph) VALUES ('{user_name}','{password}','{fname}','{lname}','{dob}','{email}','{ph}')")
     con.commit()
     con.close()
+    
     return redirect("http://localhost:4200/register",code=302)
+
 
 @app.route("/user_name",methods=['POST'])
 def user_name():
+
     username=request.json["username"]
+    
     con=sqlite3.connect("db.db")
     cur=con.cursor()
     cur.execute("SELECT user_name from accounts")
@@ -46,19 +43,35 @@ def user_name():
     cur.execute('SELECT COUNT(*) FROM accounts;')
     count=cur.fetchall()[0][0]
     con.close()
-    for i in range (count):
-        # print(op[i][0],op[i][0]==username,username)
-        if op[i][0]==username:
-            response=make_response("Caught you",200)
-            return response
-    response=make_response("",202)
-    return response
 
-@app.route("/test",methods=['POST'])
-def test():
-    a=request.form.get("a")
-    b=request.form.get("b")
-    return [a,b]
+    for i in range (count):
+    
+        if op[i][0]==username:
+            return make_response("1",200)
+    
+    return make_response("0",202)
+
+
+@app.route("/login",methods=['POST'])
+def login():
+    username=request.form.get("username")
+    password=request.form.get("password")
+    
+    con=sqlite3.connect("db.db")
+    cur=con.cursor()
+    cur.execute("SELECT user_name,password FROM accounts")
+    op=cur.fetchall()
+    cur.execute("SELECT COUNT(*) FROM accounts")
+    count=cur.fetchall()[0][0]
+    con.close()
+    
+    for i in range(count):
+    
+        if op[i][0]==username and op[i][1]==password:
+            return make_response("1",200)
+    
+    return make_response("0",202)
+
 
 @app.after_request
 def after_request(response):
@@ -66,6 +79,8 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     return response
+
+
 
 if(__name__=="__main__"):
     app.run(debug=True)

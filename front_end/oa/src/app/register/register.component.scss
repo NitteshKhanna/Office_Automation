@@ -44,8 +44,13 @@ button {
     width: 100%;
 }
 
-button:hover {
-    background-color: #45a049;
+.submit
+{
+    background-color: #5fff67;
+}
+
+.submit:hover {
+    background-color: #00c20a;
 }
 
 .container {
@@ -73,11 +78,12 @@ $color: #c9e6e4;
 @function color($setcolor)
 {
     $color:$setcolor;
+   
 }
 
 
 .strengthbar{
-    // height: .5rem;
+    color: #5fff03;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: .2rem;
@@ -87,3 +93,4 @@ div{
     border-radius: 1rem;
 }
 }
+
